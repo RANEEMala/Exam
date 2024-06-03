@@ -1,4 +1,5 @@
 import 'package:exam_end/config/get.dart';
+import 'package:exam_end/model/chat.dart';
 import 'package:exam_end/service/chat_service.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -29,115 +30,146 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
         body: 
            Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-            
+            Spacer(),
             SizedBox(
               child: 
                 
-                 Text("r i i d e", style: TextStyle(fontSize: 28, color: Colors.black, fontWeight: FontWeight.w600),
+                 Text("r i i d e", style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.w600),
                 ),
               
             ),
+            Spacer(),
              SizedBox(
               child: 
                 
-                 Text("Welcome to ride", style: TextStyle(fontSize: 28, color: Colors.black, fontWeight: FontWeight.w600),
+                 Text("Welcome to ride", style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.w600),
                 ),
               
             ),
+            Spacer(),
              Container(
               child: Padding(
                 padding: const EdgeInsets.only(right: 300.0),
-           child:   Text("Username" ,style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.w300),),
+           child:   Text("Username" ,style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w300),),
               ),),
              
-                   Container(
-                width: 400,
-               height: 90,
-                                      
-         decoration: const BoxDecoration(
-                                        color: Colors.white,
+                   Padding(
+                     padding: const EdgeInsets.all(8.0),
+                     child: Container(
+                                     width: 400,
+                                    height: 90,
                                         
-                                      ),
-                                       
-                                      child:TextField(
-                                        controller: username,
-                        onChanged: (value) {
-                          core
-                              .get<SharedPreferences>()
-                              .setString('username', value);
-                        },
-                          
-                          decoration: InputDecoration(
-                            hintText: "Enter email or username",
-                            hintStyle: const TextStyle(
-                                color: Colors.white, fontSize: 12),
-                            fillColor: Colors.grey,
-                            filled: true,
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.grey,
-                                width: 2.0,
+                              decoration: const BoxDecoration(
+                                          color: Colors.black,
+                                          
+                                        ),
+                                         
+                                        child:TextField(
+                                          controller: username,
+                          onChanged: (value) {
+                            core
+                                .get<SharedPreferences>()
+                                .setString('username', value);
+                          },
+                            
+                            decoration: InputDecoration(
+                              hintText: "Enter email or username",
+                              hintStyle: const TextStyle(
+                                  color: Colors.white, fontSize: 12),
+                              fillColor: Colors.grey,
+                              filled: true,
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                                borderSide: const BorderSide(
+                                  color: Colors.grey,
+                                  width: 2.0,
+                                ),
                               ),
-                            ),
-                          )),
-                                    
-                    ),
+                            )),
+                                      
+                      ),
+                   ),
               Container(
               child: Padding(
-                padding: const EdgeInsets.only(right: 270.0),
-           child:  Text("password" ,style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.w300),),
+                padding: const EdgeInsets.only(right: 300.0),
+           child:  Text("password" ,style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w300),),
               ),),
-            Container(
-                                      width: 400,
-                                      height: 90,
-                                      
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                                        width: 400,
+                                        height: 90,
                                         
-                                      ),
-                                       
-                                      child:TextField(
-                          
-                          decoration: InputDecoration(
-                            hintText: "Enter your password",
-                            hintStyle: const TextStyle(
-                                color: Colors.white, fontSize: 12),
-                            fillColor: Colors.grey,
-                            filled: true,
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.grey,
-                                width: 2.0,
+                                        decoration: const BoxDecoration(
+                                          color: Colors.black,
+                                          
+                                        ),
+                                         
+                                        child:TextField(
+                            
+                            decoration: InputDecoration(
+                              hintText: "Enter your password",
+                              hintStyle: const TextStyle(
+                                  color: Colors.white, fontSize: 12),
+                              fillColor: Colors.grey,
+                              filled: true,
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                                borderSide: const BorderSide(
+                                  color: Colors.grey,
+                                  width: 2.0,
+                                ),
                               ),
-                            ),
-                          )),
-                                    
-                    ),
+                            )),
+                                      
+                      ),
+            ),
+                   
+                      Container(child: Padding(
+                        padding: const EdgeInsets.only(right: 30,left: 30,bottom: 60),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                         
+                          Text(
+                          "Remember me",
+                          style: TextStyle(color: Color(0xffEDDBC5)),
+                        ),
+                        Text(
+                          "Forgot password",
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                        ],),
+                      ),),
+                      Spacer(),
+                    
                      InkWell(
               onTap: () {
   
 Navigator.push(context, MaterialPageRoute(builder:(context) => const itemPage(),),);
               },
               child:
-                    Container(
-                  width: 400,
-                  height: 50,
-                  child: Center(
-                    child: Text(
-                      "Sign in",
-                      style: TextStyle(color: Color(0xffEDDBC5)),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 50),
+                      child: Container(
+                                        width: 400,
+                                        height: 50,
+                                        child: Center(
+                      child: Text(
+                        "Sign in",
+                        style: TextStyle(color: Color(0xffEDDBC5),fontSize: 18,fontWeight: FontWeight.bold),
+                      ),
+                                        ),
+                                        decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Color(0xff4CE5B1
+                      )),),
                     ),
-                  ),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Color(0xff4CE5B1
-)),),
         ),
        
           
@@ -147,10 +179,11 @@ Navigator.push(context, MaterialPageRoute(builder:(context) => const itemPage(),
                   children: [
                     
                   
-                     Text("Don’t have an account ?  " ,style: TextStyle(color: Colors.grey), ),
-                      Text("Signin" ,style: TextStyle(color: Color(0xff4CE5B1),fontWeight: FontWeight.bold), ),],
+                     Text("Don’t have an account ?  " ,style: TextStyle(color: Colors.grey,fontSize: 18) ),
+                      Text("Signin" ,style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold,fontSize: 18), ),],
                   ),
                 ),
+                Spacer(),
           
           
           
@@ -172,7 +205,7 @@ class itemPage extends StatelessWidget {
       body: 
       Column(
         children: [
-          Expanded(
+          Flexible(
               child: Container(
             width: double.maxFinite,
             height: 60,
@@ -274,10 +307,6 @@ Navigator.push(context, MaterialPageRoute(builder:(context) => const MyWidget(),
     );
   }
 }
-
-
-
-
 class MyWidget extends StatelessWidget {
   const MyWidget({super.key});
 
@@ -300,7 +329,7 @@ class MyWidget extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                    child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder:(context) => const itemPage(),),);
+                      Navigator.push(context, MaterialPageRoute(builder:(context) => itemPage(),),);
                       
                     },
                     child: Icon(Icons.arrow_back))),
@@ -358,22 +387,25 @@ class MyWidget extends StatelessWidget {
                     return  ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) => 
-                ListTile(
-                  title: Text(
-                      "${snapshot.data![index].name}",
-                    ),
-                   trailing: Text(
-                      "${snapshot.data![index].date}",
-                      
-                    ),
-                      subtitle: Text(
-                      "${snapshot.data![index].message}",
-                      
-                    ),
-                   leading: CircleAvatar(radius: 30,
-                backgroundImage: NetworkImage(snapshot.data![index].image),
-              ),
-                    ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    title: Text(
+                        "${snapshot.data![index].name}",
+                      ),
+                     trailing: Text(
+                        "${snapshot.data![index].date}",
+                        
+                      ),
+                        subtitle: Text(
+                        "${snapshot.data![index].message}",
+                        
+                      ),
+                     leading: CircleAvatar(radius: 30,
+                  backgroundImage: NetworkImage(snapshot.data![index].image),
+                                ),
+                      ),
+                ),
               ); 
                   } else {
                     return CircularProgressIndicator();
