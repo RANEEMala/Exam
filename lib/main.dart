@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 void main() {
+  setup();
   runApp(MyApp());
 }
 
@@ -14,7 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  HomePage(),
+      home:  core.get<SharedPreferences>().getString('username')==null
+            ?
+             HomePage()
+            : MyWidget()
     );
   }
 }
