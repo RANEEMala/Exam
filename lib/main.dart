@@ -350,6 +350,7 @@ class MyWidget extends StatelessWidget {
                                     ),
                     ),
                      Flexible(
+                      flex: 20,
               child: FutureBuilder(
                 future :  getAllChat(),
                 builder: (context, snapshot) {
