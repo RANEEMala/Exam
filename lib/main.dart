@@ -298,7 +298,12 @@ class MyWidget extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(16),
-                   child: Icon(Icons.arrow_back)),
+                   child: InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder:(context) => itemPage(),),);
+                      
+                    },
+                    child: Icon(Icons.arrow_back))),
                    Center(
                     child: Text(
                       "Invite Friends",
