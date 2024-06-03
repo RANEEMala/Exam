@@ -1,5 +1,4 @@
 import 'package:exam_end/config/get.dart';
-import 'package:exam_end/model/chat.dart';
 import 'package:exam_end/service/chat_service.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -289,6 +288,7 @@ class MyWidget extends StatelessWidget {
       Column(
         children: [
           Flexible(
+            flex: 4,
               child: Container(
             width: double.maxFinite,
             height: 60,
@@ -300,7 +300,7 @@ class MyWidget extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                    child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder:(context) => itemPage(),),);
+                      Navigator.push(context, MaterialPageRoute(builder:(context) => const itemPage(),),);
                       
                     },
                     child: Icon(Icons.arrow_back))),
