@@ -284,7 +284,7 @@ class MyWidget extends StatelessWidget {
        body: 
       Column(
         children: [
-          Expanded(
+          Flexible(
               child: Container(
             width: double.maxFinite,
             height: 60,
@@ -312,19 +312,15 @@ class MyWidget extends StatelessWidget {
             ),
            
           )),
-          Padding(
+                Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
                                       width: 400,
                                       height: 40,
-                                      
                                       decoration: const BoxDecoration(
                                         color: Colors.white,
-                                        
                                       ),
-                                       
                                       child:TextField(
-                          
                           decoration: InputDecoration(
                             hintText: "Search here..",
                             hintStyle: const TextStyle(
@@ -344,28 +340,38 @@ class MyWidget extends StatelessWidget {
                           )),
                                     ),
                     ),
-                   FutureBuilder<List<Chat>>(
-          future: chatSerivceImpl().getAllchat(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView.builder(
+                     Flexible(
+              child: FutureBuilder(
+                future :  getAllChat(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return  ListView.builder(
                 itemCount: snapshot.data!.length,
-                itemBuilder: (context, index) {
-                  final item = snapshot.data![index];
-                  return ListTile(
-                    title: Text(item.name),
-                    subtitle: Text(item.message),
-            trailing: Text(item.date),
-                  );
+                itemBuilder: (context, index) => 
+                ListTile(
+                  title: Text(
+                      "${snapshot.data![index].name}",
+                    ),
+                   trailing: Text(
+                      "${snapshot.data![index].date}",
+                      
+                    ),
+                      subtitle: Text(
+                      "${snapshot.data![index].message}",
+                      
+                    ),
+                   leading: CircleAvatar(radius: 30,
+                backgroundImage: NetworkImage(snapshot.data![index].image),
+              ),
+                    ),
+              ); 
+                  } else {
+                    return CircularProgressIndicator();
+                  }
                 },
-              );
-            } else if (snapshot.hasError) {
-              // If the future completes with an error, show an error message
-              return Center(child: Text('Error: ${snapshot.error}'));
-            } else {
-              return const CircularProgressIndicator();
-            }
-          }),
+              ),
+            ),
+                  
 
     ]),);
   }
